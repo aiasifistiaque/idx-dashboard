@@ -49,6 +49,7 @@ const IssueToken = () => {
 							<Box>
 								{template.attributes?.map((item, i) => (
 									<Input
+										key={i}
 										required
 										value={credentials[i].value}
 										onChange={e => {
@@ -76,7 +77,7 @@ const IssueToken = () => {
 						{issued ? (
 							<Container shadow>
 								{credentials?.map((item, i) => (
-									<h6 className='mb-2'>
+									<h6 key={i} className='mb-2'>
 										{item.name}:{' '}
 										<span style={{ marginLeft: 4 }}>{item.value}</span>
 									</h6>
