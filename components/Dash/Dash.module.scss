@@ -1,0 +1,103 @@
+@import '../../styles/imports';
+
+.container {
+	display: flex;
+	flex: 1;
+	//min-height: 100vh;
+	margin-left: 15vw;
+	margin-top: 64px;
+	padding: 16px;
+	background-color: whitesmoke;
+}
+
+.vertical {
+	display: flex;
+	flex-direction: column;
+}
+
+.horizontal {
+	display: flex;
+	flex-direction: row;
+}
+
+.issueForm {
+	display: flex;
+	flex: 1;
+}
+
+.issue {
+	display: flex;
+	width: 100%;
+	border-radius: 10px;
+	background-color: white;
+	padding: 24px;
+	box-shadow: 0 2px 2px 2px rgba(black, 0.05);
+	margin: 0.25rem;
+}
+
+.issueCred {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.add {
+	display: flex;
+	background-color: $color-text;
+	padding: 4px 16px;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	p {
+		font-size: 12px;
+		font-weight: 700;
+	}
+}
+
+.attributes {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	.attribute {
+		box-shadow: 2px 3px 15px -2px rgba(0, 0, 0, 0.15);
+		margin: 0.5rem 2rem;
+		padding: 1.5rem;
+		border-radius: 10px;
+		width: 100%;
+		min-width: 400px;
+		.attributeName {
+			display: flex;
+			justify-content: space-between;
+			gap: 2rem;
+			margin-right: 2rem;
+			.select {
+				select {
+					padding: 4px 8px;
+					border: 1px solid rgba($color-text, 0.2);
+					border-radius: 4px;
+					font-family: 'Space Grotesk', sans-serif;
+				}
+			}
+		}
+		.closeBox {
+			display: flex;
+			justify-content: flex-end;
+			margin-right: -32px;
+			margin-top: -16px;
+			.close {
+				cursor: pointer;
+				height: 24px;
+				width: 24px;
+				background-color: $color-danger;
+				color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 4px;
+				align-items: flex-end;
+			}
+		}
+	}
+}

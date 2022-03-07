@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mt-4 {
+  margin-top: 24px;
+}
+
+.mt-5 {
+  margin-top: 32px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 15vw;
+  margin-top: 64px;
+  padding: 16px;
+  background-color: whitesmoke;
+}
+
+.vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.issueForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.issue {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 24px;
+  -webkit-box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.05);
+  margin: 0.25rem;
+}
+
+.issueCred {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #404040;
+  padding: 4px 16px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add p {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.attributes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.attributes .attribute {
+  -webkit-box-shadow: 2px 3px 15px -2px rgba(0, 0, 0, 0.15);
+          box-shadow: 2px 3px 15px -2px rgba(0, 0, 0, 0.15);
+  margin: 0.5rem 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 400px;
+}
+
+.attributes .attribute .attributeName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 2rem;
+  margin-right: 2rem;
+}
+
+.attributes .attribute .attributeName .select select {
+  padding: 4px 8px;
+  border: 1px solid rgba(64, 64, 64, 0.2);
+  border-radius: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.attributes .attribute .closeBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-right: -32px;
+  margin-top: -16px;
+}
+
+.attributes .attribute .closeBox .close {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  background-color: #ff3152;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+/*# sourceMappingURL=Dash.module.css.map */

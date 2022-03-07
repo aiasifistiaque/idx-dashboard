@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mt-4 {
+  margin-top: 24px;
+}
+
+.mt-5 {
+  margin-top: 32px;
+}
+
+.input input[type='number']::-webkit-inner-spin-button,
+.input input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input input,
+.input textarea,
+.input select {
+  margin: 0;
+  height: 32px;
+  width: 100%;
+  border: none;
+  background-color: white;
+  border-bottom: 2px solid rgba(64, 64, 64, 0.5);
+  outline: none;
+}
+
+.input input::-webkit-input-placeholder,
+.input textarea::-webkit-input-placeholder,
+.input select::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.input input:-ms-input-placeholder,
+.input textarea:-ms-input-placeholder,
+.input select:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.input input::-ms-input-placeholder,
+.input textarea::-ms-input-placeholder,
+.input select::-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.input input::placeholder,
+.input textarea::placeholder,
+.input select::placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.input input:focus,
+.input textarea:focus,
+.input select:focus {
+  border-bottom: 2px solid #0078e7;
+}
+
+
+.input textarea {
+  padding: 1em;
+}
+
+.input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 1.5em;
+  width: 100%;
+}
+
+.input label {
+  font-size: 14px;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input textarea {
+  min-height: 200px;
+}
+/*# sourceMappingURL=Input.module.css.map */

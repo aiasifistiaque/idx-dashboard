@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+.container {
+  width: 15vw;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 9;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .logo img {
+  height: 64px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.container .items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2rem 0;
+}
+
+.container .items .item {
+  padding: 1rem 2rem;
+}
+
+.container .items .item a {
+  font-size: 1.15rem;
+  font-weight: 800;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container .items .item a:hover {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+  color: #0078e7;
+}
+/*# sourceMappingURL=SIdebar.module.css.map */

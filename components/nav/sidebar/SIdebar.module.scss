@@ -1,0 +1,37 @@
+@import '../../../styles/imports';
+
+.container {
+	width: 15vw;
+	height: 100vh;
+	background-color: white;
+	border-right: 1px solid rgba(black, 0.1);
+	display: flex;
+	position: absolute;
+	z-index: 9;
+	flex-direction: column;
+	.logo {
+		img {
+			height: 64px;
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+	.items {
+		display: flex;
+		flex-direction: column;
+		margin: 2rem 0;
+		.item {
+			padding: 1rem 2rem;
+
+			a {
+				font-size: 1.15rem;
+				font-weight: 800;
+				transition: 0.3s;
+				&:hover {
+					text-decoration-line: none;
+					color: #0078e7;
+				}
+			}
+		}
+	}
+}
