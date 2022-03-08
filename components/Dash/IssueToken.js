@@ -7,16 +7,49 @@ import Box from '../util/Box';
 import Flex from '../util/Flex';
 import * as lib from '../../lib/constants';
 import Button from '../buttons/Button';
+import axios from 'axios';
 
 const IssueToken = () => {
 	const router = useRouter();
 	const [template, setTemplate] = useState({});
 	const [credentials, setCredentials] = useState([]);
 	const [issued, setIssued] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [token, setToken] = useState();
+	const [result, setResult] = useState({});
 
 	const issueCred = e => {
 		e.preventDefault();
+		issueTokenFunction(e);
 		setIssued(true);
+	};
+
+	const issueTokenFunction = async e => {
+		setLoading(true);
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+
+			console.log(credentials);
+
+			const { data } = await axios.post(
+				`${lib.api.backend}/issue`,
+				{ data: credentials },
+				config
+			);
+
+			console.log(data);
+			setResult(data.body);
+			setToken(data.token);
+			setLoading(false);
+			console.log(result, token);
+		} catch (error) {
+			console.log(error);
+			setLoading(false);
+		}
 	};
 
 	useEffect(() => {
@@ -75,15 +108,28 @@ const IssueToken = () => {
 						{/* <h3>Value</h3> */}
 
 						{issued ? (
-							<Container shadow>
-								{credentials?.map((item, i) => (
-									<h6 key={i} className='mb-2'>
-										{item.name}:{' '}
-										<span style={{ marginLeft: 4 }}>{item.value}</span>
-									</h6>
-								))}
-								{/* <h6>{JSON.stringify(credentials)}</h6> */}
-							</Container>
+							<>
+								{loading ? (
+									<h3>processing...</h3>
+								) : (
+									<>
+										<Container shadow>
+											{Object.keys(result).map((item, i) => (
+												<h6 key={i}>
+													{item}: {result[item]}
+												</h6>
+											))}
+
+											{/* <h6>{JSON.stringify(credentials)}</h6> */}
+										</Container>
+										<Container shadow>
+											<h6 style={{ wordBreak: 'break-word' }}>
+												Token: {token}
+											</h6>
+										</Container>
+									</>
+								)}
+							</>
 						) : (
 							<div></div>
 						)}
