@@ -37,7 +37,10 @@ const IssueToken = () => {
 
 			const { data } = await axios.post(
 				`${lib.api.backend}/issue`,
-				{ data: credentials },
+				{
+					data: credentials,
+					template: JSON.parse(localStorage.getItem('itentrix_template')),
+				},
 				config
 			);
 
@@ -108,16 +111,32 @@ const IssueToken = () => {
 						{/* <h3>Value</h3> */}
 
 						{issued ? (
-							<>
+							<div
+								style={{
+									display: 'flex',
+									flex: 1,
+									justifyContent: 'center',
+									flexDirection: 'column',
+								}}>
 								{loading ? (
 									<h3>processing...</h3>
 								) : (
 									<>
 										<Container shadow>
 											{Object.keys(result).map((item, i) => (
-												<h6 key={i}>
-													{item}: {result[item]}
-												</h6>
+												<div
+													style={{
+														display: 'flex',
+														justifyContent: 'space-between',
+													}}
+													key={i}>
+													<div style={{ flex: 1 }}>
+														<h6>{item}:</h6>
+													</div>
+													<div style={{ flex: 1 }}>
+														<h6>{result[item]}</h6>
+													</div>
+												</div>
 											))}
 
 											{/* <h6>{JSON.stringify(credentials)}</h6> */}
@@ -129,7 +148,7 @@ const IssueToken = () => {
 										</Container>
 									</>
 								)}
-							</>
+							</div>
 						) : (
 							<div></div>
 						)}
