@@ -26,16 +26,18 @@ const PendingRequests = () => {
 	return (
 		<Table title='Pending Requests'>
 			<Row>
-				<Item title>User Id</Item>
+				<Item title>Issuer</Item>
 				<Item title>Credential Type</Item>
+				<Item title>User email</Item>
 				<Item title>Date</Item>
 				<Item title>Status</Item>
 			</Row>
 			{!loading &&
 				data.map((item, i) => (
 					<Row key={i}>
-						<Item>{item.user}</Item>
+						<Item>{item.issuer}</Item>
 						<Item>{item.credentialType}</Item>
+						<Item>{item.user}</Item>
 						<Item date>{item.createdAt}</Item>
 						<Item>{item.status}</Item>
 					</Row>

@@ -17,6 +17,7 @@ const IssueToken = () => {
 	const [loading, setLoading] = useState(false);
 	const [token, setToken] = useState();
 	const [result, setResult] = useState({});
+	const [user, setUser] = useState();
 
 	const issueCred = e => {
 		e.preventDefault();
@@ -39,6 +40,7 @@ const IssueToken = () => {
 				`${lib.api.backend}/issue`,
 				{
 					data: credentials,
+					user,
 					template: JSON.parse(localStorage.getItem('itentrix_template')),
 				},
 				config
@@ -83,6 +85,13 @@ const IssueToken = () => {
 						</div>
 						<div className='mt-4 mb-2'>
 							<Box>
+								<Input
+									required
+									value={user}
+									onChange={e => setUser(e)}
+									label='User email'
+									type='text'
+									placeholder='email of the target user'></Input>
 								{template.attributes?.map((item, i) => (
 									<Input
 										key={i}
