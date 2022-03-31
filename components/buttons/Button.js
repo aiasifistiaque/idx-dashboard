@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './Buttons.module.css';
 
-const Button = ({ children, outlined, onClick, submit }) => {
+const Button = ({ children, outlined, onClick, submit, text }) => {
+	if (text)
+		return (
+			<div className={styles.textButton} onClick={onClick}>
+				<p>{children}</p>
+			</div>
+		);
 	if (submit)
 		return (
 			<input

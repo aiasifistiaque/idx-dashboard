@@ -172,4 +172,76 @@
       -ms-flex-align: end;
           align-items: flex-end;
 }
+
+.templateSelect {
+  margin: 0;
+  height: 32px;
+  width: 100%;
+  border: none;
+  background-color: white;
+  border-bottom: 2px solid rgba(64, 64, 64, 0.5);
+  outline: none;
+}
+
+.templateSelect::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.templateSelect:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.templateSelect::-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.templateSelect::placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.templateSelect:focus {
+  border-bottom: 2px solid #0078e7;
+}
+
+.tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tags .tag {
+  padding: 4px 16px;
+  border: 1px solid rgba(64, 64, 64, 0.5);
+  border-radius: 30px;
+}
+
+.reqTags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.reqTags .reqTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5rem 0.75rem;
+  background-color: whitesmoke;
+}
 /*# sourceMappingURL=Dash.module.css.map */

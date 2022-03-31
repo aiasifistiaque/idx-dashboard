@@ -4,9 +4,13 @@ import Input from '../util/input/Input';
 import styles from './Dash.module.css';
 import Button from '../buttons/Button';
 import { useRouter } from 'next/router';
+import axios from 'axios';
+import * as lib from '../../lib/constants';
+import useAuth from '../../hooks/useAuth';
 
 const CreateTemplate = () => {
 	const router = useRouter();
+	const { token } = useAuth();
 
 	const [attributes, setAttributes] = useState([
 		{ name: '', type: 'string', description: '' },
@@ -32,16 +36,31 @@ const CreateTemplate = () => {
 		setAttributes(temp);
 	};
 
-	const submitForm = e => {
+	const submitForm = async e => {
 		e.preventDefault();
 		const formdata = {};
 		formdata.name = name;
-		formdata.type = version;
+		formdata.version = version;
 		formdata.description = description;
 		formdata.attributes = attributes;
-		console.log(formdata);
-		localStorage.setItem('itentrix_template', JSON.stringify(formdata));
-		router.push('/issue');
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: JSON.parse(token),
+			},
+		};
+		try {
+			const { data } = await axios.post(
+				`${lib.api.backend}/template`,
+				{
+					data: formdata,
+				},
+				config
+			);
+			router.push(`/issue/${data._id}`);
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	useEffect(() => {
@@ -54,7 +73,6 @@ const CreateTemplate = () => {
 				<Container horizontalFlex shadow>
 					<Container>
 						<h5 className='mb-2'>New Credential Template</h5>
-
 						<p>
 							Start by giving a Name and a Description to your Template. Then
 							select the attributes you want to include on the right. You can

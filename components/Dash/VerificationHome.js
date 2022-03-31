@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../buttons/Button';
 import styles from './Dash.module.css';
 
-const IssueCredentials = () => {
+const VerificationHome = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.vertical}>
@@ -15,11 +15,13 @@ const IssueCredentials = () => {
 							display: 'flex',
 							flexDirection: 'column',
 						}}>
-						<h5>Create a Credential Template</h5>
+						<h5>Verification Services</h5>
 						<br />
 						<p>
-							This is where you will decide what information your Customer{`'`}s
-							Credentials will include. All your templates will be saved below.
+							Verification Services are how you verify your Customer{`'`}s
+							Credentials.Here is where you decide what Credentials your
+							customers have to present tobe able to access one of your
+							services.
 						</p>
 					</div>
 					<div className={styles.issueCred} style={{ flex: 1 }}>
@@ -28,11 +30,10 @@ const IssueCredentials = () => {
 							alt='Create Template'
 							style={{ height: 180, objectFit: 'contain' }}
 						/>
-						<div className={styles.vertisl}>
-							<Link href={'/create-template'}>
-								<Button>Create New Template</Button>
+						<div className={styles.vertical}>
+							<Link href={'/create-verification-service'}>
+								<Button>Create Verification Services</Button>
 							</Link>
-							<Button outlined>Explore Template</Button>
 						</div>
 					</div>
 				</div>
@@ -41,4 +42,4 @@ const IssueCredentials = () => {
 	);
 };
 
-export default IssueCredentials;
+export default VerificationHome;

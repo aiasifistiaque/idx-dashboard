@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import useAuth from '../hooks/useAuth';
 import LandingPage from '../components/Dash/LandingPage';
 import PendingRequests from '../components/Dash/PendingRequests';
 import Page from '../components/nav/Page/Page';
 
-const index = () => {
+const IndexPage = () => {
+	const { isLoggedIn, loading } = useAuth();
+	if (loading) return null;
 	return (
 		<Page selected='Dashboard'>
 			<LandingPage />
@@ -12,4 +15,4 @@ const index = () => {
 	);
 };
 
-export default index;
+export default IndexPage;

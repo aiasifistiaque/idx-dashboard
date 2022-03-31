@@ -10,6 +10,9 @@ const LandingPage = () => {
 			<Link href='/issue-credentials'>
 				<Button outlined>Issue Credentials</Button>
 			</Link>
+			<Link href='/verification-service'>
+				<Button outlined>Verificaction Service</Button>
+			</Link>
 		</div>
 	);
 };

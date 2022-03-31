@@ -1,6 +1,5 @@
 import React from 'react';
 import CreateTemplate from '../components/Dash/CreateTemplate';
-import IssueCredentials from '../components/Dash/IssueCredentials';
 import Page from '../components/nav/Page/Page';
 
 const CreateTemplatePage = () => {

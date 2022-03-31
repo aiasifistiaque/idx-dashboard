@@ -12,4 +12,20 @@
 	box-shadow: 0 2px 4px 2px rgba(black, 0.05);
 	position: fixed;
 	width: 100%;
+
+	.logout {
+		cursor: pointer;
+		align-self: center;
+		width: 50%;
+
+		p {
+			text-align: right;
+			font-size: 14px;
+			font-weight: 700;
+		}
+	}
+
+	h3 {
+		cursor: pointer;
+	}
 }

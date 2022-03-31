@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import styles from './Table.module.css';
+import Link from 'next/link';
 
 export const Table = ({ children, loading, title }) => {
 	return (
@@ -11,7 +12,13 @@ export const Table = ({ children, loading, title }) => {
 	);
 };
 
-export const Row = ({ children }) => {
+export const Row = ({ children, href }) => {
+	if (href)
+		return (
+			<Link href={href}>
+				<div className={styles.linkItems}>{children}</div>
+			</Link>
+		);
 	return <div className={styles.items}>{children}</div>;
 };
 

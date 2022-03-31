@@ -1,13 +1,13 @@
 import React from 'react';
-import AllTemplates from '../components/Dash/AllTemplates';
-import IssueCredentials from '../components/Dash/IssueCredentials';
+import AllVerificationServices from '../components/Dash/AllVerificationServices';
+import VerificationHome from '../components/Dash/VerificationHome';
 import Page from '../components/nav/Page/Page';
 
 const IssueCredentialsPage = () => {
 	return (
 		<Page selected='Dashboard'>
-			<IssueCredentials />
-			<AllTemplates />
+			<VerificationHome />
+			<AllVerificationServices />
 		</Page>
 	);
 };

@@ -101,3 +101,48 @@
 		}
 	}
 }
+
+.templateSelect {
+	margin: 0;
+	height: 32px;
+	width: 100%;
+	border: none;
+
+	background-color: white;
+	border-bottom: 2px solid rgba($color-text, 0.5);
+	outline: none;
+
+	&::placeholder {
+		font-size: 16px;
+		font-weight: 600;
+		font-family: 'Space Grotesk', sans-serif;
+	}
+
+	&:focus {
+		border-bottom: 2px solid $color-primary;
+		//outline: none;
+	}
+}
+
+.tags {
+	display: flex;
+	gap: 0.5rem;
+	margin: 1rem 0;
+	.tag {
+		padding: 4px 16px;
+		border: 1px solid rgba($color-text, 0.5);
+		border-radius: 30px;
+	}
+}
+
+.reqTags {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin: 1rem 0;
+	.reqTag {
+		display: flex;
+		padding: 0.5rem 0.75rem;
+		background-color: whitesmoke;
+	}
+}

@@ -8,8 +8,9 @@ import Flex from '../util/Flex';
 import * as lib from '../../lib/constants';
 import Button from '../buttons/Button';
 import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
 
-const IssueToken = () => {
+const IssueToken = ({ id }) => {
 	const router = useRouter();
 	const [template, setTemplate] = useState({});
 	const [credentials, setCredentials] = useState([]);
@@ -18,6 +19,8 @@ const IssueToken = () => {
 	const [token, setToken] = useState();
 	const [result, setResult] = useState({});
 	const [user, setUser] = useState();
+	const [pageLoading, setPageLoading] = useState(true);
+	const auth = useAuth();
 
 	const issueCred = e => {
 		e.preventDefault();
@@ -25,12 +28,32 @@ const IssueToken = () => {
 		setIssued(true);
 	};
 
+	const getTemplate = async () => {
+		setPageLoading(true);
+		try {
+			const { data } = await axios.get(`${lib.api.backend}/template/${id}`);
+
+			setTemplate(data);
+			let credValue = [];
+			data.attributes.map((attribute, i) => {
+				credValue.push({ name: attribute.name, value: '' });
+			});
+			setCredentials(credValue);
+			setPageLoading(false);
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
 	const issueTokenFunction = async e => {
+		e.preventDefault();
 		setLoading(true);
+
 		try {
 			const config = {
 				headers: {
 					'Content-Type': 'application/json',
+					authorization: JSON.parse(auth.token),
 				},
 			};
 
@@ -41,16 +64,16 @@ const IssueToken = () => {
 				{
 					data: credentials,
 					user,
-					template: JSON.parse(localStorage.getItem('itentrix_template')),
+					template,
 				},
 				config
 			);
 
-			console.log(data);
 			setResult(data.body);
 			setToken(data.token);
 			setLoading(false);
-			console.log(result, token);
+
+			setLoading(false);
 		} catch (error) {
 			console.log(error);
 			setLoading(false);
@@ -58,14 +81,9 @@ const IssueToken = () => {
 	};
 
 	useEffect(() => {
-		const data = JSON.parse(localStorage.getItem('itentrix_template'));
-		setTemplate(data);
-		let credValue = [];
-		data.attributes.map((attribute, i) => {
-			credValue.push({ name: attribute.name, value: '' });
-		});
-		setCredentials(credValue);
-	}, []);
+		getTemplate();
+	}, [id]);
+	if (pageLoading) return null;
 	return (
 		<div className={styles.container}>
 			<form className={styles.issueForm} onSubmit={issueCred}>
