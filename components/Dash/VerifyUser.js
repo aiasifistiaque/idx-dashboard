@@ -9,13 +9,19 @@ import * as lib from '../../lib/constants';
 import Button from '../buttons/Button';
 import axios from 'axios';
 import useGetVerificationService from '../../hooks/useGetVerificationService';
+import useGetMyCustomers from '../../hooks/useGetMyCustomers';
 
 const VerifyUser = ({ id }) => {
 	const router = useRouter();
 
 	const { data, loading, error } = useGetVerificationService(id);
+	const myCustomers = useGetMyCustomers();
+	const [useService, setUseService] = useState(false);
 
-	const issueCred = e => {};
+	const issueCred = e => {
+		e.preventDefault();
+		setUseService(true);
+	};
 
 	if (loading) return null;
 
@@ -51,7 +57,7 @@ const VerifyUser = ({ id }) => {
 						</div>
 						<div style={{ alignSelf: 'flex-end' }} className='mt-3'>
 							<Button submit>Use This Service</Button>
-							<Button outlined onClick={() => router.back()}>
+							<Button outlined onClick={() => setUseService(false)}>
 								Cancel
 							</Button>
 						</div>
@@ -59,10 +65,36 @@ const VerifyUser = ({ id }) => {
 				</Container>
 
 				<Container horizontalFlex shadow>
-					<Container></Container>
+					{!myCustomers.loading && useService && (
+						<Container>
+							{myCustomers.data.map((item, i) => (
+								<Customer key={i}>{item}</Customer>
+							))}
+						</Container>
+					)}
 				</Container>
 			</form>
 		</div>
+	);
+};
+
+const Customer = ({ children }) => {
+	const [selected, setSelected] = useState(false);
+	return (
+		<Container
+			horizontal
+			style={{
+				justifyContent: 'space-between',
+				alignItems: 'center',
+				width: '100%',
+			}}>
+			<h6>{children}</h6>
+			{selected ? (
+				<h6>Requested</h6>
+			) : (
+				<Button onClick={() => setSelected(true)}>Select</Button>
+			)}
+		</Container>
 	);
 };
 

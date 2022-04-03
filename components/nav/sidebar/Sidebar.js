@@ -13,7 +13,9 @@ const Sidebar = ({ selected }) => {
 				<Link href='/'>
 					<Item selected={selected}>Dashboard</Item>
 				</Link>
-				<Item selected={selected}>Customers</Item>
+				<Link href='/customers'>
+					<Item selected={selected}>Customers</Item>
+				</Link>
 				<Item selected={selected}>Transactions</Item>
 				<Item selected={selected}>Block Explorer</Item>
 				<Item selected={selected}>Marketplace</Item>
