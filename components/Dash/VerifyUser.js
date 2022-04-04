@@ -10,6 +10,7 @@ import Button from '../buttons/Button';
 import axios from 'axios';
 import useGetVerificationService from '../../hooks/useGetVerificationService';
 import useGetMyCustomers from '../../hooks/useGetMyCustomers';
+import useAuth from '../../hooks/useAuth';
 
 const VerifyUser = ({ id }) => {
 	const router = useRouter();
@@ -44,7 +45,7 @@ const VerifyUser = ({ id }) => {
 							<Box>
 								<h6>Authorize Data</h6>
 								<p>
-									This Organization is requesting for the following informations
+									This Organization is requesting for the following information
 								</p>
 							</Box>
 						</div>
@@ -55,6 +56,7 @@ const VerifyUser = ({ id }) => {
 								</div>
 							))}
 						</div>
+
 						<div style={{ alignSelf: 'flex-end' }} className='mt-3'>
 							<Button submit>Use This Service</Button>
 							<Button outlined onClick={() => setUseService(false)}>
@@ -68,7 +70,12 @@ const VerifyUser = ({ id }) => {
 					{!myCustomers.loading && useService && (
 						<Container>
 							{myCustomers.data.map((item, i) => (
-								<Customer key={i}>{item}</Customer>
+								<Customer
+									key={i}
+									verification={id}
+									attributes={data.attributes}>
+									{item}
+								</Customer>
 							))}
 						</Container>
 					)}
@@ -78,8 +85,37 @@ const VerifyUser = ({ id }) => {
 	);
 };
 
-const Customer = ({ children }) => {
-	const [selected, setSelected] = useState(false);
+const Customer = ({ children, verification, attributes }) => {
+	const auth = useAuth();
+	const [loading, setLoading] = useState();
+	const [selected, setSelected] = useState();
+
+	const requestData = async () => {
+		setLoading(true);
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+					authorization: JSON.parse(auth.token),
+				},
+			};
+
+			const { data } = await axios.post(
+				`${lib.api.backend}/verify/request`,
+				{
+					user: children,
+					verification,
+					attributes: attributes,
+				},
+				config
+			);
+			setLoading(false);
+			setSelected(true);
+		} catch (error) {
+			console.log(error);
+			setLoading(false);
+		}
+	};
 	return (
 		<Container
 			horizontal
@@ -89,10 +125,12 @@ const Customer = ({ children }) => {
 				width: '100%',
 			}}>
 			<h6>{children}</h6>
-			{selected ? (
+			{loading ? (
+				<Button>loading...</Button>
+			) : selected ? (
 				<h6>Requested</h6>
 			) : (
-				<Button onClick={() => setSelected(true)}>Select</Button>
+				<Button onClick={requestData}>Select</Button>
 			)}
 		</Container>
 	);
