@@ -19,7 +19,7 @@ const AllVerificationServices = () => {
 				data.map((item, i) => (
 					<Row key={i} href={`/verify/${item._id}`}>
 						<Item>{item.name}</Item>
-						<Item>{item.issuer}</Item>
+						<Item>{item.issuer.name}</Item>
 						<Item date>{item.createdAt}</Item>
 					</Row>
 				))}

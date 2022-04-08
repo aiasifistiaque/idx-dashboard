@@ -14,6 +14,14 @@
 	flex-direction: column;
 }
 
+.contain {
+	border-radius: 10px;
+	background-color: white;
+	margin: 0.5rem;
+	box-shadow: 0 2px 2px 2px rgba(black, 0.05);
+	margin-left: 16.5vw;
+}
+
 .items {
 	display: flex;
 	border-radius: 4;

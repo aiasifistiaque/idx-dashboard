@@ -11,6 +11,7 @@ import axios from 'axios';
 import useGetVerificationService from '../../hooks/useGetVerificationService';
 import useGetMyCustomers from '../../hooks/useGetMyCustomers';
 import useAuth from '../../hooks/useAuth';
+import Link from 'next/link';
 
 const VerifyUser = ({ id }) => {
 	const router = useRouter();
@@ -35,9 +36,18 @@ const VerifyUser = ({ id }) => {
 
 						<div className='mt-4 mb-2'>
 							<Box horizontal>
-								<Flex>
+								<div
+									style={{
+										justifyContent: 'space-between',
+										display: 'flex',
+										flex: 1,
+										alignItems: 'center',
+									}}>
 									<h6>{data.name}</h6>
-								</Flex>
+									<Link href={`/verified-data/${id}`}>
+										<Button text>Received Data</Button>
+									</Link>
+								</div>
 							</Box>
 						</div>
 

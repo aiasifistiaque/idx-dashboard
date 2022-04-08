@@ -12,6 +12,10 @@ export const Table = ({ children, loading, title }) => {
 	);
 };
 
+export const Contain = ({ children }) => {
+	return <div className={styles.contain}>{children}</div>;
+};
+
 export const Row = ({ children, href }) => {
 	if (href)
 		return (

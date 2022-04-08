@@ -229,6 +229,24 @@
   padding: 4px 16px;
   border: 1px solid rgba(64, 64, 64, 0.5);
   border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 0;
+}
+
+.tags .tag img {
+  cursor: pointer;
+  padding: 4px 12px;
+  height: 24px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .reqTags {

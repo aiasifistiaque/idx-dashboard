@@ -15,7 +15,7 @@ const VerificationHome = () => {
 							display: 'flex',
 							flexDirection: 'column',
 						}}>
-						<h5>Verification Services</h5>
+						<h5>Verification services</h5>
 						<br />
 						<p>
 							Verification Services are how you verify your Customer{`'`}s

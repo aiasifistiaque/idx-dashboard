@@ -20,6 +20,7 @@ const CreateVerification = () => {
 	const [endpoint, setEndpoint] = useState();
 	const [key, setKey] = useState();
 	const [template, setTemplate] = useState({});
+	const [selectedAttributes, setSelectedAttributes] = useState([]);
 	const auth = useAuth();
 
 	const submitForm = async e => {
@@ -29,11 +30,12 @@ const CreateVerification = () => {
 		formdata.description = description;
 		formdata.endpoint = endpoint;
 		formdata.key = key;
+		formdata.template = template;
 		let attribArr = [];
 		template?.attributes?.map(item => {
 			attribArr.push(item.name);
 		});
-		formdata.attributes = attribArr;
+		formdata.attributes = selectedAttributes;
 		console.log(formdata);
 		const config = {
 			headers: {
@@ -106,7 +108,12 @@ const CreateVerification = () => {
 						</Container>
 
 						<div className={styles.attributes}>
-							<VerifySelect attrib={template} setAttrib={e => setTemplate(e)} />
+							<VerifySelect
+								attrib={template}
+								setAttrib={e => setTemplate(e)}
+								selectedAttributes={selectedAttributes}
+								setSelectedAttributes={e => setSelectedAttributes(e)}
+							/>
 						</div>
 						<Container horizontal>
 							<Button submit>Create Verificaction Service</Button>
@@ -121,9 +128,22 @@ const CreateVerification = () => {
 	);
 };
 
-const VerifySelect = ({ attrib, setAttrib }) => {
+const VerifySelect = ({
+	attrib,
+	setAttrib,
+	selectedAttributes,
+	setSelectedAttributes,
+}) => {
 	const { loading, data, error } = useGetTemplates();
 	const [template, setTemplate] = useState(0);
+
+	useEffect(() => {
+		if (attrib?.attributes) {
+			const temp = [];
+			attrib?.attributes.map(item => temp.push(item.name));
+			setSelectedAttributes(temp);
+		}
+	}, [attrib]);
 
 	useEffect(() => {
 		setAttrib(data[parseInt(template)]);
@@ -141,6 +161,9 @@ const VerifySelect = ({ attrib, setAttrib }) => {
 							setTemplate(e.target.value);
 						}}
 						style={{ textTransform: 'capitalize' }}>
+						<option disabled selected value>
+							Please select a template
+						</option>
 						{data.map((option, i) => (
 							<option key={i} value={i}>
 								{option.name}
@@ -150,9 +173,18 @@ const VerifySelect = ({ attrib, setAttrib }) => {
 				</div>
 				<h6 className='mt-3'>Attributes</h6>
 				<div className={styles.tags}>
-					{data[parseInt(template)]?.attributes?.map((item, i) => (
+					{selectedAttributes?.map((item, i) => (
 						<div className={styles.tag} key={i}>
-							<p>{item.name}</p>
+							<p>{item}</p>
+							<img
+								src='/icons/cancel.png'
+								alt='x'
+								onClick={() =>
+									setSelectedAttributes(
+										selectedAttributes.filter(x => x !== item)
+									)
+								}
+							/>
 						</div>
 					))}
 				</div>

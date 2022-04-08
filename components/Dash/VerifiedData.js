@@ -4,7 +4,7 @@ import { Table, Row, Item } from '../util/table/Table';
 import * as lib from '../../lib/constants';
 import useAuth from '../../hooks/useAuth';
 
-const AllTemplates = () => {
+const VerifiedData = () => {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState([]);
 	const auth = useAuth();
@@ -17,7 +17,7 @@ const AllTemplates = () => {
 			},
 		};
 		try {
-			const { data } = await axios.get(`${lib.api.backend}/template`, config);
+			const { data } = await axios.get(`${lib.api.backend}/issue`, config);
 			setData(data);
 			setLoading(false);
 		} catch (error) {
@@ -27,31 +27,33 @@ const AllTemplates = () => {
 	};
 
 	useEffect(() => {
-		setLoading(true);
-		!auth.loading && getAllPendingFunctions();
+		if (!auth.loading) {
+			setLoading(true);
+			getAllPendingFunctions();
+		}
 	}, [auth.loading]);
 
 	return (
-		<Table title='Your Credential Templates'>
+		<Table title='Pending Requests'>
 			<Row>
-				<Item title>Template Name</Item>
-				<Item title>Version</Item>
-				<Item title>Created By</Item>
-				<Item title>Unique Id</Item>
-				<Item title>Created</Item>
+				<Item title>Issuer</Item>
+				<Item title>Credential Type</Item>
+				<Item title>User email</Item>
+				<Item title>Date</Item>
+				<Item title>Status</Item>
 			</Row>
 			{!loading &&
 				data.map((item, i) => (
-					<Row key={i} href={`/issue/${item._id}`}>
-						<Item>{item.name}</Item>
-						<Item>{item.version}</Item>
-						<Item>{item.issuer.name}</Item>
-						<Item>{item._id}</Item>
+					<Row key={i}>
+						<Item>{item.issuer}</Item>
+						<Item>{item.credentialType}</Item>
+						<Item>{item.user}</Item>
 						<Item date>{item.createdAt}</Item>
+						<Item>{item.status}</Item>
 					</Row>
 				))}
 		</Table>
 	);
 };
 
-export default AllTemplates;
+export default VerifiedData;

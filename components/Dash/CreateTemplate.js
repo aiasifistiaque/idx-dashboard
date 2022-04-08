@@ -7,6 +7,18 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import * as lib from '../../lib/constants';
 import useAuth from '../../hooks/useAuth';
+import Select from '../util/input/Select';
+
+const catData = [
+	'Personal',
+	'Assets',
+	'Education',
+	'License',
+	'Healthcare',
+	'Bills',
+	'Certificates',
+	'Web Credentials',
+];
 
 const CreateTemplate = () => {
 	const router = useRouter();
@@ -16,6 +28,7 @@ const CreateTemplate = () => {
 		{ name: '', type: 'string', description: '' },
 	]);
 	const [name, setName] = useState();
+	const [category, setCategory] = useState(catData[1]);
 	const [version, setVersion] = useState();
 	const [description, setDescription] = useState();
 	const addAttrib = () => {
@@ -43,6 +56,7 @@ const CreateTemplate = () => {
 		formdata.version = version;
 		formdata.description = description;
 		formdata.attributes = attributes;
+		formdata.category = category;
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
@@ -85,6 +99,23 @@ const CreateTemplate = () => {
 								onChange={e => setName(e)}
 								label='Template Name'
 								placeholder='University Degree'></Input>
+							<div className={styles.select}>
+								<Select required label='Category'>
+									<select
+										className={styles.templateSelect}
+										value={category}
+										onChange={e => {
+											setCategory(e.target.value);
+										}}
+										style={{ textTransform: 'capitalize' }}>
+										{catData.map((option, i) => (
+											<option key={i} value={option}>
+												{option}
+											</option>
+										))}
+									</select>
+								</Select>
+							</div>
 							<Input
 								required
 								value={version}
