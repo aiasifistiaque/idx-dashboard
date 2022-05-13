@@ -9,6 +9,7 @@ import * as lib from '../../lib/constants';
 import Button from '../buttons/Button';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import DataItem from '../util/text/DataItem';
 
 const IssueToken = ({ id }) => {
 	const router = useRouter();
@@ -80,6 +81,9 @@ const IssueToken = ({ id }) => {
 		}
 	};
 
+	const background =
+		'linear-gradient(90deg, rgba(0,15,36,0.5760898109243697) 2%, rgba(86,148,128,0.09149597338935578) 36%, rgba(117,0,255,0.6769301470588236) 100%);';
+
 	useEffect(() => {
 		getTemplate();
 	}, [id]);
@@ -150,23 +154,44 @@ const IssueToken = ({ id }) => {
 								) : (
 									<>
 										<Container shadow>
-											{Object.keys(result).map((item, i) => (
+											<div className={styles.idCard}>
+												<h5>
+													{template?.issuer?.name && template.issuer.name}
+												</h5>
 												<div
 													style={{
-														display: 'flex',
-														justifyContent: 'space-between',
+														height: 2,
+														borderBottom: '2px solid rgba(30,144,255,.2)',
+														borderRadius: 4,
+														margin: '8px 0',
+														marginBottom:16
 													}}
-													key={i}>
-													<div style={{ flex: 1 }}>
-														<h6>{item}:</h6>
+												/>
+												{/* {JSON.stringify(template)} */}
+												{Object.keys(result).map((item, i) => (
+													<div style={{}} key={i}>
+														<DataItem title={item}>{result[item]}</DataItem>
 													</div>
-													<div style={{ flex: 1 }}>
-														<h6>{result[item]}</h6>
-													</div>
-												</div>
-											))}
-
-											{/* <h6>{JSON.stringify(credentials)}</h6> */}
+												))}
+												{/* <h6>{JSON.stringify(credentials)}</h6> */}
+												<div
+													style={{
+														borderBottom: '1px solid rgba(30,144,255,.2)',
+														borderRadius: 4,
+														margin: '8px 0',
+														marginTop: 16,
+													}}
+												/>
+												<p
+													style={{
+														color: '#888',
+														fontWeight: '600',
+														textAlign: 'right',
+														fontSize: '.8rem',
+													}}>
+													{template?.name && template.name}
+												</p>
+											</div>
 										</Container>
 										<Container shadow>
 											<h6 style={{ wordBreak: 'break-word' }}>
