@@ -19,8 +19,10 @@ const Sidebar = ({ selected }) => {
 				<Link href='/transactions'>
 					<Item selected={selected}>Transactions</Item>
 				</Link>
+				<Link href='/block-explorer'>
+					<Item selected={selected}>Block Explorer</Item>
+				</Link>
 
-				<Item selected={selected}>Block Explorer</Item>
 				<Item selected={selected}>Marketplace</Item>
 				<Item selected={selected}>Business</Item>
 			</div>

@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { Table, Row, Item } from '../util/table/Table';
 import { useGetPendingRequestsQuery } from '../../store/services/productService';
 import { useRouter } from 'next/router';
+import Text from '../util/text/Text';
 
-const PendingRequests = () => {
-	const { data, isLoading, error } = useGetPendingRequestsQuery('');
+const BlockExplorer = () => {
+	const { data, isLoading, error } = useGetPendingRequestsQuery('global');
 	const router = useRouter();
 
 	useEffect(() => {
@@ -12,7 +13,7 @@ const PendingRequests = () => {
 	}, [isLoading, error]);
 
 	return (
-		<Table title='Pending Requests'>
+		<Table title='All Transactions'>
 			<Row>
 				<Item title>Issuer</Item>
 				<Item title>Credential Type</Item>
@@ -22,8 +23,14 @@ const PendingRequests = () => {
 			</Row>
 			{!isLoading &&
 				data.map((item, i) => (
-					<Row key={i} href={`/transaction/${item._id}`}>
-						<Item>{item.issuer}</Item>
+					<Row key={i}>
+						<Item>
+							{item?.issuer?.name ? (
+								item.issuer.name
+							) : (
+								<Text blank>Name Not Set</Text>
+							)}
+						</Item>
 						<Item>{item.credentialType}</Item>
 						<Item>{item.user}</Item>
 						<Item date>{item.createdAt}</Item>
@@ -34,4 +41,4 @@ const PendingRequests = () => {
 	);
 };
 
-export default PendingRequests;
+export default BlockExplorer;

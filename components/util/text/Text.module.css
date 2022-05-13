@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mt-4 {
+  margin-top: 24px;
+}
+
+.mt-5 {
+  margin-top: 32px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.dataItem {
+  margin: 0.5rem 0;
+  margin-right: 0.5rem;
+}
+
+.dataItem h6 {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.dataItem p {
+  color: black;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  word-break: break-all;
+}
+
+.dataItem .sub {
+  color: #888;
+  font-size: 0.7rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+/*# sourceMappingURL=Text.module.css.map */

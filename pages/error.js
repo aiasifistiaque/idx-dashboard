@@ -5,6 +5,8 @@ import Page from '../components/nav/Page/Page';
 import DummyHomeTable from '../components/Dash/DummyHomeTable';
 import { Contain, Table } from '../components/util/table/Table';
 import { useRouter } from 'next/router';
+import Button from '../components/buttons/Button';
+import Link from 'next/link';
 
 const IndexPage = () => {
 	const { isLoggedIn, loading, token } = useAuth();
@@ -24,34 +26,22 @@ const IndexPage = () => {
 					overflow: 'scroll',
 				}}>
 				<div style={{ flex: 2, marginTop: 32 }}>
-					<Contain>
-						<img
-							src='/livesever.png'
-							style={{
-								width: '100%',
-								height: 'auto',
-								objectFit: 'contain',
-								borderRadius: 10,
-								padding: 0,
-							}}
-						/>
-					</Contain>
 					<div style={{ marginTop: 64 }} />
-
-					<LandingPage />
-					<DummyHomeTable />
-				</div>
-				<div style={{ flex: 1 }}>
-					<img
-						src='/right.png'
-						style={{
-							width: 'auto',
-							sobjectFit: 'contain',
-							borderRadius: 10,
-							padding: 0,
-							height: 600,
-						}}
-					/>
+					<Contain>
+						<div
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								flexDirection: 'column',
+								padding: '32px 24px',
+							}}>
+							<h4 style={{ marginBottom: 32 }}>An error Occured</h4>
+							<Link href='/'>
+								<Button>Go back home</Button>
+							</Link>
+						</div>
+					</Contain>
 				</div>
 			</div>
 		</Page>

@@ -9,6 +9,8 @@ const Box = ({
 	shadow,
 	align,
 	style,
+	justify,
+
 	flex,
 }) => {
 	return (
@@ -22,7 +24,12 @@ const Box = ({
 					? styles.horizontal
 					: styles.vertical
 			} ${shadow && styles.shadow} ${flex && styles.flex}`}
-			style={{ margin: 0, padding: 0 }}>
+			style={{
+				margin: 0,
+				padding: 0,
+				justifyContent: justify ? justify : 'flex-start',
+				alignItems: align ? align : 'flex-start',
+			}}>
 			{children}
 		</div>
 	);
