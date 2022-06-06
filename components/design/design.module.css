@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mt-4 {
+  margin-top: 24px;
+}
+
+.mt-5 {
+  margin-top: 32px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 16px;
+}
+
+.design {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid transparent;
+}
+
+.cardOne, .cardTwo, .cardThree, .cardFour {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  width: 500px;
+  -webkit-box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.cardOne .header, .cardTwo .header, .cardThree .header, .cardFour .header {
+  padding: 24px 32px 8px 32px;
+  border-bottom: 2px solid rgba(30, 144, 255, 0.2);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.cardOne .body, .cardTwo .body, .cardThree .body, .cardFour .body {
+  padding: 16px 32px;
+}
+
+.cardOne .body .dataItem, .cardTwo .body .dataItem, .cardThree .body .dataItem, .cardFour .body .dataItem {
+  margin: 0.5rem 0;
+  margin-right: 0.5rem;
+}
+
+.cardOne .body .dataItem h6, .cardTwo .body .dataItem h6, .cardThree .body .dataItem h6, .cardFour .body .dataItem h6 {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.cardOne .body .dataItem p, .cardTwo .body .dataItem p, .cardThree .body .dataItem p, .cardFour .body .dataItem p {
+  color: black;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  word-break: break-all;
+}
+
+.cardOne .body .dataItem .sub, .cardTwo .body .dataItem .sub, .cardThree .body .dataItem .sub, .cardFour .body .dataItem .sub {
+  color: #888;
+  font-size: 0.7rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.cardOne .footer, .cardTwo .footer, .cardThree .footer, .cardFour .footer {
+  border-top: 1px solid rgba(30, 144, 255, 0.2);
+  padding: 8px 32px 16px 32px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.cardOne .footer p, .cardTwo .footer p, .cardThree .footer p, .cardFour .footer p {
+  color: #888;
+  font-weight: 600;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.cardOne {
+  background: linear-gradient(197.89deg, #fafafa 21.34%, rgba(255, 255, 255, 0.5) 79.54%);
+}
+
+.cardTwo {
+  background: linear-gradient(197.89deg, #fafafa 21.34%, rgba(255, 255, 255, 0.5) 79.54%);
+}
+
+.cardTwo .header {
+  background-color: #ffc540;
+  border-bottom: none;
+}
+
+.cardTwo .footer {
+  border-top: none;
+  background-color: #ffc540;
+}
+
+.cardThree {
+  background: linear-gradient(197.89deg, #fafafa 21.34%, rgba(255, 255, 255, 0.5) 79.54%);
+}
+
+.cardThree .header {
+  background-color: #ffe7c6;
+  border-bottom: 2px solid white;
+}
+
+.cardThree .footer {
+  background-color: #ffe7c6;
+  border-top: 2px solid white;
+}
+
+.cardThree .body {
+  background-color: #ffe7c6;
+}
+
+.cardFour {
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  background: linear-gradient(197.89deg, #fafafa 21.34%, rgba(255, 255, 255, 0.5) 79.54%);
+}
+
+.cardFour .header {
+  background-color: rgba(220, 20, 60, 0.2);
+  border-bottom: 2px solid transparent;
+}
+
+.cardFour .footer {
+  background-color: rgba(220, 20, 60, 0.2);
+  border-top: 2px solid transparent;
+}
+
+.cardFour .body {
+  background-color: rgba(220, 20, 60, 0.2);
+}
+
+.small {
+  width: 220px;
+}
+
+.small .header {
+  padding: 4px 16px;
+}
+
+.small .header h5 {
+  font-size: 12px;
+}
+
+.small .footer {
+  padding: 2px 16px;
+}
+
+.small .footer p {
+  font-size: 8px;
+  line-height: 16px;
+}
+
+.small .body {
+  padding: 4px 16px;
+}
+
+.small .body .dataItem {
+  margin: 0;
+}
+
+.small .body .dataItem h6 {
+  font-size: 0.6rem;
+  line-height: 10px;
+}
+
+.small .body .dataItem p {
+  font-size: 0.6rem;
+}
+
+.small:hover {
+  cursor: pointer;
+  border: 1px solid #0078e7;
+  border-radius: 8px;
+}
+
+.select {
+  border: 1px solid #005eb4;
+  border-radius: 8px;
+}
+/*# sourceMappingURL=design.module.css.map */

@@ -10,6 +10,7 @@ import Button from '../buttons/Button';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import DataItem from '../util/text/DataItem';
+import { TemplateContainer, TemplateDesign } from '../design/TemplateDesigns';
 
 const IssueToken = ({ id }) => {
 	const router = useRouter();
@@ -20,12 +21,16 @@ const IssueToken = ({ id }) => {
 	const [token, setToken] = useState();
 	const [result, setResult] = useState({});
 	const [user, setUser] = useState();
+	const [design, setDesign] = useState('one');
+	const [designSelected, setDesignSelected] = useState('one');
+
 	const [pageLoading, setPageLoading] = useState(true);
 	const auth = useAuth();
 
 	const issueCred = e => {
 		e.preventDefault();
 		issueTokenFunction(e);
+		setDesignSelected(design);
 		setIssued(true);
 	};
 
@@ -128,6 +133,61 @@ const IssueToken = ({ id }) => {
 										type={item.type == 'date' ? 'date' : 'text'}
 										placeholder={item.description}></Input>
 								))}
+								<h6>Choose Template Design</h6>
+								<TemplateContainer>
+									<TemplateDesign
+										onClick={() => setDesign('one')}
+										select='one'
+										small
+										result={{ name: 'eg. John Doe', id: '11223344' }}
+										template={{
+											issuer: template?.issuer?.name
+												? template.issuer.name
+												: '',
+											name: template?.name ? template.name : '',
+										}}
+										selected={design == 'one' ? true : false}
+									/>
+									<TemplateDesign
+										onClick={() => setDesign('two')}
+										select='two'
+										selected={design == 'two' ? true : false}
+										small
+										result={{ name: 'eg. John Doe', id: '11223344' }}
+										template={{
+											issuer: template?.issuer?.name
+												? template.issuer.name
+												: '',
+											name: template?.name ? template.name : '',
+										}}
+									/>
+									<TemplateDesign
+										onClick={() => setDesign('three')}
+										selected={design == 'three' ? true : false}
+										select='three'
+										small
+										result={{ name: 'eg. John Doe', id: '11223344' }}
+										template={{
+											issuer: template?.issuer?.name
+												? template.issuer.name
+												: '',
+											name: template?.name ? template.name : '',
+										}}
+									/>
+									<TemplateDesign
+										onClick={() => setDesign('four')}
+										selected={design == 'four' ? true : false}
+										select='four'
+										small
+										result={{ name: 'eg. John Doe', id: '11223344' }}
+										template={{
+											issuer: template?.issuer?.name
+												? template.issuer.name
+												: '',
+											name: template?.name ? template.name : '',
+										}}
+									/>
+								</TemplateContainer>
 							</Box>
 						</div>
 						<div style={{ alignSelf: 'flex-end' }}>
@@ -138,10 +198,7 @@ const IssueToken = ({ id }) => {
 
 				<Container horizontalFlex shadow>
 					<Container>
-						{/* <h6>{JSON.stringify(template)}</h6> */}
-						{/* <h3>Value</h3> */}
-
-						{issued ? (
+						{issued && result ? (
 							<div
 								style={{
 									display: 'flex',
@@ -153,46 +210,17 @@ const IssueToken = ({ id }) => {
 									<h3>processing...</h3>
 								) : (
 									<>
-										<Container shadow>
-											<div className={styles.idCard}>
-												<h5>
-													{template?.issuer?.name && template.issuer.name}
-												</h5>
-												<div
-													style={{
-														height: 2,
-														borderBottom: '2px solid rgba(30,144,255,.2)',
-														borderRadius: 4,
-														margin: '8px 0',
-														marginBottom:16
-													}}
-												/>
-												{/* {JSON.stringify(template)} */}
-												{Object.keys(result).map((item, i) => (
-													<div style={{}} key={i}>
-														<DataItem title={item}>{result[item]}</DataItem>
-													</div>
-												))}
-												{/* <h6>{JSON.stringify(credentials)}</h6> */}
-												<div
-													style={{
-														borderBottom: '1px solid rgba(30,144,255,.2)',
-														borderRadius: 4,
-														margin: '8px 0',
-														marginTop: 16,
-													}}
-												/>
-												<p
-													style={{
-														color: '#888',
-														fontWeight: '600',
-														textAlign: 'right',
-														fontSize: '.8rem',
-													}}>
-													{template?.name && template.name}
-												</p>
-											</div>
-										</Container>
+										<TemplateDesign
+											select={designSelected}
+											template={{
+												issuer: template?.issuer?.name
+													? template.issuer.name
+													: '',
+												name: template?.name ? template.name : '',
+											}}
+											result={result}
+										/>
+
 										<Container shadow>
 											<h6 style={{ wordBreak: 'break-word' }}>
 												Token: {token}

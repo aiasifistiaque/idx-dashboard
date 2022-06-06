@@ -1,0 +1,175 @@
+@import '../../styles/imports';
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.design {
+	display: flex;
+	border: 1px solid transparent;
+}
+
+%cardEx {
+	//transform: scale(0.5);
+	border: 1px solid transparent;
+
+	border-radius: 8px;
+	width: 500px;
+	box-shadow: 0 2px 2px 2px rgba(black, 0.05);
+	//border: 1px solid whitesmoke;
+	.header {
+		padding: 24px 32px 8px 32px;
+		border-bottom: 2px solid rgba(30, 144, 255, 0.2);
+
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+	.body {
+		padding: 16px 32px;
+		.dataItem {
+			margin: 0.5rem 0;
+			margin-right: 0.5rem;
+			h6 {
+				color: #888;
+				font-size: 0.8rem;
+			}
+			p {
+				color: black;
+				font-size: 1rem;
+				font-weight: 600;
+				text-transform: capitalize;
+				word-break: break-all;
+			}
+			.sub {
+				color: #888;
+				font-size: 0.7rem;
+				font-weight: 600;
+				word-break: break-all;
+			}
+		}
+	}
+
+	.footer {
+		border-top: 1px solid rgba(30, 144, 255, 0.2);
+		padding: 8px 32px 16px 32px;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+
+		p {
+			color: #888;
+			font-weight: 600;
+			text-align: right;
+			font-size: 0.8rem;
+		}
+	}
+}
+
+.cardOne {
+	@extend %cardEx;
+	background: linear-gradient(
+		197.89deg,
+		#fafafa 21.34%,
+		rgba(255, 255, 255, 0.5) 79.54%
+	);
+}
+
+.cardTwo {
+	@extend %cardEx;
+	background: linear-gradient(
+		197.89deg,
+		#fafafa 21.34%,
+		rgba(255, 255, 255, 0.5) 79.54%
+	);
+	.header {
+		background-color: #ffc540;
+		border-bottom: none;
+	}
+	.footer {
+		border-top: none;
+		background-color: #ffc540;
+	}
+}
+
+.cardThree {
+	@extend %cardEx;
+	background: linear-gradient(
+		197.89deg,
+		#fafafa 21.34%,
+		rgba(255, 255, 255, 0.5) 79.54%
+	);
+	.header {
+		background-color: #ffe7c6;
+		border-bottom: 2px solid white;
+	}
+	.footer {
+		background-color: #ffe7c6;
+		border-top: 2px solid white;
+	}
+	.body {
+		background-color: #ffe7c6;
+	}
+}
+
+.cardFour {
+	@extend %cardEx;
+	border: 1px solid rgba(crimson, 0.3);
+	background: linear-gradient(
+		197.89deg,
+		#fafafa 21.34%,
+		rgba(255, 255, 255, 0.5) 79.54%
+	);
+	.header {
+		background-color: rgba(crimson, 0.2);
+		border-bottom: 2px solid transparent;
+	}
+	.footer {
+		background-color: rgba(crimson, 0.2);
+		border-top: 2px solid transparent;
+	}
+	.body {
+		background-color: rgba(crimson, 0.2);
+	}
+}
+
+.small {
+	width: 220px;
+	.header {
+		padding: 4px 16px;
+		h5 {
+			font-size: 12px;
+		}
+	}
+	.footer {
+		padding: 2px 16px;
+
+		p {
+			font-size: 8px;
+			line-height: 16px;
+		}
+	}
+	.body {
+		padding: 4px 16px;
+		.dataItem {
+			margin: 0;
+			h6 {
+				font-size: 0.6rem;
+				line-height: 10px;
+			}
+			p {
+				font-size: 0.6rem;
+			}
+		}
+	}
+	&:hover {
+		cursor: pointer;
+		border: 1px solid $color-primary;
+		border-radius: 8px;
+	}
+}
+
+.select {
+	border: 1px solid darken($color-primary, 10%);
+	border-radius: 8px;
+}
